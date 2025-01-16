@@ -1,0 +1,172 @@
+Celest is a spiritual card game.
+
+
+Each card has a name, an image, and a score divided amongs 4 symbols: Terra, Sol, Luna and Mercurius. The scores on the cards range from 0 to 4, and cards only ever add to 4 with their own scores. With the exception of 2 notable cards that have scores of all 0. (Spirit, Sahasrara and Cleric)
+
+There are a total of 72 cards, with each set of 12 belonging to a different category.
+
+the categories, with each card, and their score (listed from left to right in order; Terra, Sol, Luna, Mercurius):
+
+Essences
+- Black Hole: 1, 1, 1, 1
+- Serpent: 1, 1, 1, 1
+- Terra: 4, 0, 0, 0
+- Sol: 0,4,0,0
+- Luna: 0,0,4,0
+- Mercurius: 0,0,0,4
+- Sahasrara: 0,0,0,0
+- Spirit:  0,0,0,0
+- Earth:  4,0,0,0
+- Fire:  0,4,0,0
+- Water: 0,0,4,0
+- Air: 0,0,04
+
+Constellations
+- Cancer: 1,0,3,1
+- Taurus: 3,0,1,0
+- Pisces: 0,1,3,0
+- Virgo: 3,1,0,0
+- Sagittarius: 0,3,0,1
+- Capricorn: 3,0,0,1
+- Gemini: 0,0,1,3
+- Aquarius: 0,1,0,3
+- Libra: 1,0,0,3
+- Leo: 0,3,1,0
+- Scorpio: 0,1,3,0
+- Aries: 1,3,0,0
+
+Planets
+- Muladhara: 2,2,0,0
+- Svadhishthana: 0,2,2,0
+- Manipura: 2,0,0,2
+- Anahat: 0,0,2,2
+- Vishuddha: 2,0,2,0
+- Ajnaa: 0,2,0,2
+- Mars: 2,2,0,0
+- Venus: 0,2,2,0
+- Saturn: 2,0,0,2
+- Jupiter: 0,0,2,2
+- Neptune: 2,0,2,0
+- Uranus: 0,2,0,2
+
+Archetypes
+- Cleric: 0,0,0,0
+- Dragon: 1,1,1,1
+- Spring: 4,0,0,0
+- Summer: 0,4,0,0
+- Autumn: 0,0,4,0
+- Winter: 0,0,0,4
+- Artisan: 0,2,0,2
+- Sage: 2,0,2,0
+- Server: 0,0,2,2
+- Scholar: 2,0,0,2
+- Monarch: 0,2,2,0
+- Warrior: 2,2,0,0
+
+Animals
+- Raven: 0,3,0,1
+- Wolf: 0,0,3,1
+- Lion: 0,3,1,0
+- Owl: 1,0,0,3
+- Stag: 3,0,0,1
+- Ram: 1,3,0,0
+- Octopus: 0,1,3,0
+- Bear: 3,0,1,0
+- Frog: 0,1,0,3
+- Scorpion: 0,1,3,0
+- Rabbit: 3,1,0,0
+- Bee: 0,0,1,3
+
+Minerals
+- Carnelian: 1,2,0,1
+- Peridot: 2,0,1,1
+- Jade: 0,1,1,2
+- Moonstone: 1,0,2,1
+- Tiger's Eye: 1,2,1,0
+- Kyanite: 2,1,1,0
+- Lapis Lazuli: 1,1,0,2
+- Amethyst: 1,1,2,0
+- Turquoise: 0,2,1,1
+- Azurite: 2,1,0,1
+- Yellow Jasper: 0,1,1,2
+- Aquamarine: 0,1,2,1
+
+
+Essences
+Black Hole: A period of intense transformation and unknown possibilities; embrace the void.
+Serpent: Renewal and healing through shedding old skins; wisdom and hidden knowledge.
+Terra: Grounding and stability; connection to nature and the physical world.
+Sol: Radiance and personal power; a time to shine and express your true self.
+Luna: Intuition and the subconscious; explore your dreams and hidden emotions.
+Mercurius: Communication and adaptability; embrace change and new ideas.
+Sahasrara: Spiritual awakening and enlightenment; connect with higher consciousness.
+Spirit: Essence of life and vitality; a reminder of your inner strength and purpose.
+Earth: Practicality and nurturing; focus on the tangible and nurturing aspects of life.
+Fire: Passion and transformation; harness your inner fire to drive change.
+Water: Emotions and intuition; flow with your feelings and trust your inner voice.
+Air: Intellect and clarity; use your mind to navigate through challenges.
+Constellations
+Cancer: Emotional depth and protection; nurture yourself and those around you.
+Taurus: Stability and perseverance; stay grounded and determined.
+Pisces: Compassion and spirituality; connect with your inner self and others.
+Virgo: Organization and attention to detail; focus on refinement and improvement.
+Sagittarius: Adventure and growth; seek new horizons and expand your knowledge.
+Capricorn: Ambition and discipline; work steadily towards your goals.
+Gemini: Duality and communication; embrace versatility and express yourself clearly.
+Aquarius: Innovation and humanitarianism; think outside the box and care for the collective.
+Libra: Balance and harmony; strive for fairness and equilibrium in all aspects.
+Leo: Leadership and creativity; shine with confidence and inspire others.
+Scorpio: Transformation and intensity; delve deep and embrace change.
+Aries: Initiative and courage; take bold steps and lead the way.
+Planets
+Muladhara: Foundation and security; focus on grounding and survival needs.
+Svadhishthana: Creativity and emotions; embrace your desires and emotional well-being.
+Manipura: Power and confidence; assert your will and pursue your goals.
+Anahat: Love and compassion; open your heart and foster connections.
+Vishuddha: Communication and truth; speak your truth and listen carefully.
+Ajnaa: Intuition and insight; trust your inner wisdom and seek clarity.
+Mars: Action and drive; take decisive steps and pursue your ambitions.
+Venus: Love and beauty; appreciate the aesthetics and cultivate relationships.
+Saturn: Discipline and responsibility; embrace structure and long-term goals.
+Jupiter: Expansion and prosperity; seek growth and broaden your horizons.
+Neptune: Dreams and intuition; tap into your subconscious and spiritual insights.
+Uranus: Change and innovation; welcome the unexpected and embrace new ideas.
+Archetypes
+Cleric: Guidance and spirituality; seek wisdom and connect with higher principles.
+Dragon: Power and mystery; harness your inner strength and embrace transformation.
+Spring: Renewal and growth; a time of new beginnings and fresh energy.
+Summer: Vitality and abundance; enjoy the peak of your energy and achievements.
+Autumn: Harvest and reflection; gather your rewards and prepare for change.
+Winter: Rest and introspection; a time to withdraw and rejuvenate.
+Artisan: Creativity and skill; focus on your craft and express your talents.
+Sage: Wisdom and learning; seek knowledge and share your insights.
+Server: Service and humility; assist others and embrace humility.
+Scholar: Knowledge and study; dedicate yourself to learning and intellectual pursuits.
+Monarch: Authority and leadership; take charge and lead with integrity.
+Warrior: Strength and courage; confront challenges and protect what matters.
+Animals
+Raven: Mystery and transformation; seek the hidden and embrace change.
+Wolf: Loyalty and intuition; trust your instincts and support your pack.
+Lion: Courage and authority; lead with strength and confidence.
+Owl: Wisdom and insight; seek knowledge and trust your inner vision.
+Stag: Grace and renewal; embrace growth and move with elegance.
+Ram: Determination and boldness; take action and break through obstacles.
+Octopus: Flexibility and intelligence; adapt to changing situations with cleverness.
+Bear: Strength and protection; nurture yourself and those you care about.
+Frog: Transformation and adaptability; embrace change and new beginnings.
+Scorpion: Intensity and protection; navigate through challenges with resilience.
+Rabbit: Fertility and caution; be productive but remain aware of dangers.
+Bee: Community and hard work; contribute to the collective and be diligent.
+Minerals
+Carnelian: Motivation and creativity; ignite your passions and take action.
+Peridot: Healing and renewal; embrace growth and positive changes.
+Jade: Harmony and balance; seek peace and foster well-being.
+Moonstone: Intuition and dreams; connect with your inner self and the mystical.
+Tiger's Eye: Protection and confidence; harness your inner strength and focus.
+Kyanite: Communication and clarity; align your thoughts and express yourself clearly.
+Lapis Lazuli: Truth and wisdom; seek knowledge and speak your truth.
+Amethyst: Spirituality and calm; embrace your spiritual journey and find tranquility.
+Turquoise: Healing and protection; foster well-being and ward off negative influences.
+Azurite: Insight and transformation; seek deeper understanding and embrace change.
+Yellow Jasper: Protection and endurance; maintain strength and resilience.
+Aquamarine: Clarity and serenity; find peace and clear your mind.
