@@ -202,21 +202,60 @@ def draw_three_cards():
 
     combined_scores_text = "".join([f"{symbols[j]}: {combined_scores[j]}  " for j in range(4)])
     tk.Label(result_frame, text=f"Combined Scores: {combined_scores_text}", font=("Helvetica", 14, "italic")).pack(pady=10)
+def draw_five_cards():
+    selected_cards = random.sample(cards, 5)
+
+    for widget in result_frame.winfo_children():
+        widget.destroy()
+
+    cards_frame = tk.Frame(result_frame)
+    cards_frame.pack()
+
+    combined_scores = [0, 0, 0, 0]
+
+    for i, card in enumerate(selected_cards):
+        card_name, scores, keywords, image_path = card
+        combined_scores = [combined_scores[j] + scores[j] for j in range(4)]
+
+        card_frame = tk.Frame(cards_frame, borderwidth=2, relief="ridge")
+        card_frame.grid(row=0, column=i, padx=10)
+
+        tk.Label(card_frame, text=f"Card: {card_name}", font=("Helvetica", 14, "bold")).pack(pady=5)
+
+        if image_path:
+            img = resize_image(image_path)
+            img_label = tk.Label(card_frame, image=img)
+            img_label.image = img
+            img_label.pack(pady=5)
+
+        tk.Label(card_frame, text="Keywords: " + ", ".join(keywords), font=("Helvetica", 12)).pack()
+
+        symbols = ["Terra", "Sol", "Luna", "Mercurius"]
+        scores_text = "".join([f"{symbols[j]}: {scores[j]}  " for j in range(4)])
+        tk.Label(card_frame, text=f"Scores: {scores_text}", font=("Helvetica", 12)).pack(pady=5)
+
+    combined_scores_text = "".join([f"{symbols[j]}: {combined_scores[j]}  " for j in range(4)])
+    tk.Label(result_frame, text=f"Combined Scores: {combined_scores_text}", font=("Helvetica", 14, "italic")).pack(pady=10)
+
+
 
 # Main GUI window
 root = tk.Tk()
-root.title("Azakaela's Cards")
+root.title("Card Drawer")
 
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
 
-tk.Label(root, text="Azakaela's Cards", font=("Helvetica", 18, "bold")).pack(pady=20)
+tk.Label(root, text="Random Card Drawer", font=("Helvetica", 18, "bold")).pack(pady=20)
 
 buttons_frame = tk.Frame(root)
 buttons_frame.pack()
 
 tk.Button(buttons_frame, text="Draw Card", command=draw_card, font=("Helvetica", 14)).grid(row=0, column=0, padx=10)
 tk.Button(buttons_frame, text="Draw Three Cards", command=draw_three_cards, font=("Helvetica", 14)).grid(row=0, column=1, padx=10)
+
+# Adding the new "Draw Five Cards" button
+tk.Button(buttons_frame, text="Draw Five Cards", command=draw_five_cards, font=("Helvetica", 14)).grid(row=0, column=2, padx=10)
 
 result_frame = tk.Frame(root)
 result_frame.pack(fill="both", expand=True)
