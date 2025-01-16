@@ -20,7 +20,7 @@ cards = [
     ("Taurus", (3, 0, 1, 0), ["Strength", "Patience", "Persistence"], "images/taurus.png"),
     ("Pisces", (0, 1, 3, 0), ["Dream", "Compassion", "Mysticism"], "images/pisces.png"),
     ("Virgo", (3, 1, 0, 0), ["Service", "Detail", "Order"], "images/virgo.png"),
-    ("Sagittarius", (0, 3, 0, 1), ["Adventure", "Vision", "Freedom"], "images/sagitarius.png"),
+    ("Sagittarius", (0, 3, 0, 1), ["Adventure", "Vision", "Freedom"], "images/sagittarius.png"),
     ("Capricorn", (3, 0, 0, 1), ["Discipline", "Ambition", "Legacy"], "images/capricorn.png"),
     ("Gemini", (0, 0, 1, 3), ["Duality", "Adaptability", "Curiosity"], "images/gemini.png"),
     ("Aquarius", (0, 1, 0, 3), ["Innovation", "Individuality", "Reform"], "images/aquarius.png"),
