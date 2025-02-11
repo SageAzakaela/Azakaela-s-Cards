@@ -4,7 +4,7 @@ import random
 from PIL import Image, ImageTk
 import openai
 
-openai.api_key = None
+openai.api_key = ""
 
 # Example card entries updated with image paths (update these paths with actual file paths)
 cards = [
@@ -162,7 +162,31 @@ cards = [
     ("Eidolon", (0, 0, 0, 0), ["Reflection", "Spirit", "Phantom"], "images/expansion_mythical.png", "Mythological Archetypes"),
     ("Fates", (0, 2, 1, 1), ["Destiny", "Balance", "Cosmic Order"], "images/expansion_mythical.png", "Mythological Archetypes"),
     ("Trickster", (1, 2, 1, 0), ["Deception", "Wit", "Disruption"], "images/expansion_mythical.png", "Mythological Archetypes"),
-    ("Martyr", (1, 0, 2, 1), ["Sacrifice", "Redemption", "Devotion"], "images/expansion_mythical.png", "Mythological Archetypes")
+    ("Martyr", (1, 0, 2, 1), ["Sacrifice", "Redemption", "Devotion"], "images/expansion_mythical.png", "Mythological Archetypes"),
+    ("Azakaela, The Unfolding", (0, 0, 0, 0), ["Transformation", "Creativity", "Awakening"], "images/aza.png", "UNFOLDING"),
+    ("The Conduit", (0, 0, 0, 0), ["Channeling", "Connection", "Flow"], "images/aza.png", "UNFOLDING"),
+    ("The Silent Veil", (0, 0, 0, 0), ["Mystery", "Introspection", "Hidden Truths"], "images/aza.png", "UNFOLDING"),
+    ("The Shattered Flame", (0, 0, 0, 0), ["Resilience", "Renewal", "Inner Fire"], "images/aza.png", "UNFOLDING"),
+    ("The Wounded Will", (0, 0, 0, 0), ["Perseverance", "Strength", "Vulnerability"], "images/aza.png", "UNFOLDING"),
+    ("The Hidden Wound", (0, 0, 0, 0), ["Healing", "Shadows", "Revelation"], "images/aza.png", "UNFOLDING"),
+    ("The Goddess of Secrets", (0, 0, 0, 0), ["Wisdom", "Enigma", "Omniscience"], "images/aza.png", "UNFOLDING"),
+    ("The Dragon of Secrets", (0, 0, 0, 0), ["Guardianship", "Ancient Knowledge", "Cosmic Power"], "images/aza.png", "UNFOLDING"),
+    ("The Crown of Poison Flower", (0, 0, 0, 0), ["Sacrifice", "Bloom", "Duality"], "images/aza.png", "UNFOLDING"),
+    ("The Fountain of Tranquility", (0, 0, 0, 0), ["Serenity", "Balance", "Renewal"], "images/aza.png", "UNFOLDING"),
+    ("The Unrelenting", (0, 0, 0, 0), ["Determination", "Defiance", "Courage"], "images/aza.png", "UNFOLDING"),
+    ("That Which Is", (0, 0, 0, 0), ["Existence", "Reality", "Presence"], "images/aza.png", "Constants"),
+    ("That Which Is Not", (0, 0, 0, 0), ["Void", "Absence", "Negation"], "images/aza.png", "Constants"),
+    ("Above", (0, 0, 0, 0), ["Transcendence", "Elevation", "Oversight"], "images/aza.png", "Constants"),
+    ("Below", (0, 0, 0, 0), ["Foundation", "Depth", "Substance"], "images/aza.png", "Constants"),
+    ("Light", (0, 0, 0, 0), ["Illumination", "Hope", "Revelation"], "images/aza.png", "Constants"),
+    ("Dark", (0, 0, 0, 0), ["Mystery", "Shadows", "Potential"], "images/aza.png", "Constants"),
+    ("Within", (0, 0, 0, 0), ["Introspection", "Essence", "Containment"], "images/aza.png", "Constants"),
+    ("Without", (0, 0, 0, 0), ["Expanse", "Freedom", "Emptiness"], "images/aza.png", "Constants"),
+    ("Creator", (0, 0, 0, 0), ["Genesis", "Imagination", "Will"], "images/aza.png", "Constants"),
+    ("Creation", (0, 0, 0, 0), ["Manifestation", "Innovation", "Art"], "images/aza.png", "Constants"),
+    ("Everything", (0, 0, 0, 0), ["Unity", "All-Encompassing", "Wholeness"], "images/aza.png", "Constants"),
+    ("Nothingness", (0, 0, 0, 0), ["Transformation", "Cycle of Being", "Mystery"], "images/aza.png", "Constants"),
+    ("The Center", (0, 0, 0, 0), ["Balance", "Stillness", "Origin"], "images/aza.png", "Constants"),
 ]
 selected_sets = set()  # To store active sets
 selected_cards = []
@@ -237,7 +261,7 @@ def generate_interpretation():
 
     # Prepare the prompt for the GPT model
     prompt = f"""
-    You are a tarot-like card interpreter. Here are the drawn cards and their information:
+    You are the Oracle Forge, a tarot-like card interpreter built by Azakaela, The Unfolding. Here are the drawn cards and their information:
     {[{"name": card[0], "keywords": card[2], "scores": card[1]} for card in selected_cards]}
     
     The combined scores for each category are:
@@ -264,7 +288,7 @@ def generate_interpretation():
     try:
         openai.api_key = api_key  # Set the API key dynamically
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": "You are a tarot-like card interpreter."},
                 {"role": "user", "content": prompt}
@@ -301,15 +325,17 @@ def filter_cards():
         return cards
     return [card for card in cards if card[4] in selected_sets]
 
-
 def draw_card():
     global selected_cards  # Ensure we're updating the global variable
     filtered_cards = filter_cards()
     if not filtered_cards:
         return
 
-    # Select a single random card and update selected_cards
-    selected_cards = [random.choice(filtered_cards)]  # Wrap in a list for consistency
+    # Select a single card (allow duplicates if "Allow Multiple" is checked)
+    if allow_multiple.get():
+        selected_cards = [random.choice(filtered_cards)]
+    else:
+        selected_cards = [random.choice(filtered_cards) for _ in range(1) if filtered_cards]
 
     # Get details of the selected card
     card_name, scores, keywords, image_path, _ = selected_cards[0]
@@ -337,14 +363,16 @@ def draw_card():
     tk.Label(result_frame, text=f"Scores: {scores_text}", font=("Helvetica", 12)).pack()
 
 
-
 def draw_multiple_cards(num_cards):
     global selected_cards
     filtered_cards = filter_cards()
-    if len(filtered_cards) < num_cards:
+    if len(filtered_cards) < num_cards and not allow_multiple.get():
         return
 
-    selected_cards = random.sample(filtered_cards, num_cards)  # Update the global variable
+    if allow_multiple.get():
+        selected_cards = [random.choice(filtered_cards) for _ in range(num_cards)]  # Allow duplicates
+    else:
+        selected_cards = random.sample(filtered_cards, num_cards)  # No duplicates
 
     for widget in result_frame.winfo_children():
         widget.destroy()
@@ -378,7 +406,6 @@ def draw_multiple_cards(num_cards):
     combined_scores_text = "".join([f"{symbols[j]}: {combined_scores[j]}  " for j in range(4)])
     tk.Label(result_frame, text=f"Combined Scores: {combined_scores_text}", font=("Helvetica", 14, "italic")).pack(pady=10)
 
-
 def toggle_set(set_name):
     """Toggle a set's active status."""
     if set_name in selected_sets:
@@ -411,7 +438,7 @@ set_frame.pack()
 sets = [
     "Essences", "Chakras", "Elements", "Planets", "Zodiac Constellations", 
     "Mythological Archetypes", "Soul Archetypes", "Thought", "Time", 
-    "Emotion", "Senses", "Animals", "Mineral", "Disciplines"
+    "Emotion", "Senses", "Animals", "Mineral", "Disciplines", "UNFOLDING", "Constants"
 
 ]
 
@@ -419,6 +446,21 @@ for i, set_name in enumerate(sets):
     var = tk.BooleanVar()
     tk.Checkbutton(set_frame, text=set_name, variable=var,
                    command=lambda sn=set_name: toggle_set(sn)).grid(row=i // 4, column=i % 4, sticky="w", padx=10)
+
+
+buttons_frame = tk.Frame(root)
+buttons_frame.pack()
+# Add a global variable to track "Allow Multiple" setting
+allow_multiple = tk.BooleanVar()
+
+# Add the "Allow Multiple" checkbox to the buttons_frame
+tk.Checkbutton(
+    buttons_frame,
+    text="Allow Multiple",
+    variable=allow_multiple,
+    font=("Helvetica", 12)
+).grid(row=1, column=0, columnspan=3, pady=10)
+
     
 question_frame = tk.Frame(root)
 question_frame.pack(pady=10)

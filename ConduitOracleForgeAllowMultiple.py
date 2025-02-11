@@ -237,7 +237,7 @@ def generate_interpretation():
 
     # Prepare the prompt for the GPT model
     prompt = f"""
-    You are a tarot-like card interpreter. Here are the drawn cards and their information:
+    You are Conduit, the Oracle Forge, a tarot-like card interpreter. Here are the drawn cards and their information:
     {[{"name": card[0], "keywords": card[2], "scores": card[1]} for card in selected_cards]}
     
     The combined scores for each category are:
@@ -301,15 +301,17 @@ def filter_cards():
         return cards
     return [card for card in cards if card[4] in selected_sets]
 
-
 def draw_card():
     global selected_cards  # Ensure we're updating the global variable
     filtered_cards = filter_cards()
     if not filtered_cards:
         return
 
-    # Select a single random card and update selected_cards
-    selected_cards = [random.choice(filtered_cards)]  # Wrap in a list for consistency
+    # Select a single card (allow duplicates if "Allow Multiple" is checked)
+    if allow_multiple.get():
+        selected_cards = [random.choice(filtered_cards)]
+    else:
+        selected_cards = [random.choice(filtered_cards) for _ in range(1) if filtered_cards]
 
     # Get details of the selected card
     card_name, scores, keywords, image_path, _ = selected_cards[0]
@@ -337,14 +339,16 @@ def draw_card():
     tk.Label(result_frame, text=f"Scores: {scores_text}", font=("Helvetica", 12)).pack()
 
 
-
 def draw_multiple_cards(num_cards):
     global selected_cards
     filtered_cards = filter_cards()
-    if len(filtered_cards) < num_cards:
+    if len(filtered_cards) < num_cards and not allow_multiple.get():
         return
 
-    selected_cards = random.sample(filtered_cards, num_cards)  # Update the global variable
+    if allow_multiple.get():
+        selected_cards = [random.choice(filtered_cards) for _ in range(num_cards)]  # Allow duplicates
+    else:
+        selected_cards = random.sample(filtered_cards, num_cards)  # No duplicates
 
     for widget in result_frame.winfo_children():
         widget.destroy()
@@ -377,7 +381,6 @@ def draw_multiple_cards(num_cards):
 
     combined_scores_text = "".join([f"{symbols[j]}: {combined_scores[j]}  " for j in range(4)])
     tk.Label(result_frame, text=f"Combined Scores: {combined_scores_text}", font=("Helvetica", 14, "italic")).pack(pady=10)
-
 
 def toggle_set(set_name):
     """Toggle a set's active status."""
@@ -419,6 +422,21 @@ for i, set_name in enumerate(sets):
     var = tk.BooleanVar()
     tk.Checkbutton(set_frame, text=set_name, variable=var,
                    command=lambda sn=set_name: toggle_set(sn)).grid(row=i // 4, column=i % 4, sticky="w", padx=10)
+
+
+buttons_frame = tk.Frame(root)
+buttons_frame.pack()
+# Add a global variable to track "Allow Multiple" setting
+allow_multiple = tk.BooleanVar()
+
+# Add the "Allow Multiple" checkbox to the buttons_frame
+tk.Checkbutton(
+    buttons_frame,
+    text="Allow Multiple",
+    variable=allow_multiple,
+    font=("Helvetica", 12)
+).grid(row=1, column=0, columnspan=3, pady=10)
+
     
 question_frame = tk.Frame(root)
 question_frame.pack(pady=10)
